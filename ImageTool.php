@@ -242,10 +242,10 @@ class ImageTool {
 		}
 
 		// calculate new w, h, x and y
-
 		if (!empty($options['width']) && !is_numeric($options['width'])) {
 			return false;
 		}
+		
 		if (!empty($options['height']) && !is_numeric($options['height'])) {
 			return false;
 		}
@@ -376,7 +376,10 @@ class ImageTool {
 
 		return self::saveImage($dst_im, $options);
 	}
-
+	
+	
+	
+	
 	/**
 	 * Apply unsharp mask to image
 	 *
@@ -550,14 +553,8 @@ class ImageTool {
 		if (!is_string($filename)) {
 			return '';
 		}
-
-		$pos = strrpos($filename, '.');
-
-		if ($pos === false) {
-			return '';
-		}
-
-		return strtolower(substr($filename, $pos + 1));
+		
+		return pathinfo($filename, PATHINFO_EXTENSION);
 	}
 
 	/**
